@@ -1,4 +1,4 @@
-package entangle
+package entangled
 
 import (
 	"testing"
