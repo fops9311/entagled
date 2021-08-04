@@ -1,18 +1,6 @@
-package main
+package entangle
 
-import "fmt"
-
-func main() {
-	in, out := entangle()
-	in(1)
-	a := out().(int)
-	a++
-	fmt.Println(a)
-	fmt.Println(out())
-	in(false)
-	fmt.Println(out())
-}
-func entangle() (in func(interface{}), out func() interface{}) {
+func Entangle() (in func(interface{}), out func() interface{}) {
 	var data interface{}
 	in = func(d interface{}) {
 		data = d
