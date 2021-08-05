@@ -20,3 +20,16 @@ func TestEntangle(t *testing.T) {
 		t.Errorf("in(false) --> out().(bool) = %d; want false", a)
 	}
 }
+func TestToWay(t *testing.T) {
+	in, out := ToWay()
+	in.emiter(1)
+	result := out.reciever().(int)
+	if result != 1 {
+		t.Errorf("in.emiter(1) --> out.reciever().(int) = %d; want 1", result)
+	}
+	out.emiter(1)
+	result = in.reciever().(int)
+	if result != 1 {
+		t.Errorf("out.emiter(1) --> in.reciever().(int) = %d; want 1", result)
+	}
+}

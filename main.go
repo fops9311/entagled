@@ -10,3 +10,14 @@ func Entangle() (in func(interface{}), out func() interface{}) {
 	}
 	return in, out
 }
+
+func ToWay() (in ToWayPipeline, out ToWayPipeline) {
+	in.emiter, out.reciever = Entangle()
+	out.emiter, in.reciever = Entangle()
+	return
+}
+
+type ToWayPipeline struct {
+	emiter   func(interface{})
+	reciever func() interface{}
+}
